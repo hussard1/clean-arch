@@ -8,6 +8,9 @@ import com.hussard01.coupon.core.repository.CouponRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CouponServiceImpl implements CouponService {
@@ -15,6 +18,7 @@ public class CouponServiceImpl implements CouponService {
   private final CouponRepository couponRepository;
 
   @Override
+  @Transactional
   public Coupon create(final Coupon coupon) {
     if (couponRepository.existsByName(coupon.getName())) {
       throw new CouponNameDuplicateException();
@@ -23,11 +27,12 @@ public class CouponServiceImpl implements CouponService {
   }
 
   @Override
-  public Coupon find(final CouponSearchParam couponSearchParam) {
-    return null;
+  public List<Coupon> findBy(final CouponSearchParam couponSearchParam) {
+    return couponRepository.findBy(couponSearchParam);
   }
 
   @Override
+  @Transactional
   public Coupon use(final Long id) {
     final Coupon coupon = couponRepository.findById(id).orElseThrow(CouponNotFoundException::new);
     coupon.use();

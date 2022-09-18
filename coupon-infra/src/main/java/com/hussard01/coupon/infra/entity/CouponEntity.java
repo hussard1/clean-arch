@@ -24,23 +24,16 @@ public class CouponEntity {
   private Long id;
 
   private String name;
-  private LocalDateTime startDateTime;
-  private LocalDateTime endDateTime;
+  private LocalDateTime saleDateTime;
 
   public static CouponEntity of(final Coupon coupon) {
     return CouponEntity.builder()
         .name(coupon.getName())
-        .startDateTime(coupon.getStartDateTime())
-        .endDateTime(coupon.getEndDateTime())
+        .saleDateTime(coupon.getSaleDateTime())
         .build();
   }
 
   public Coupon toCoupon() {
-    return Coupon.builder()
-        .id(this.id)
-        .name(this.name)
-        .startDateTime(this.startDateTime)
-        .endDateTime(this.endDateTime)
-        .build();
+    return Coupon.builder().id(this.id).name(this.name).saleDateTime(this.saleDateTime).build();
   }
 }

@@ -12,8 +12,7 @@ import java.time.LocalDateTime;
 public class Coupon {
   private long id;
   private String name;
-  private LocalDateTime startDateTime;
-  private LocalDateTime endDateTime;
+  private LocalDateTime saleDateTime;
   private UseStatus useStatus;
 
   public Coupon use() {

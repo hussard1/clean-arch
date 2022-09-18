@@ -14,15 +14,9 @@ public class CouponCreateReq {
 
   @NotBlank public String name;
 
-  @NotNull public LocalDateTime startDateTime;
-
-  @NotNull public LocalDateTime endDateTime;
+  @NotNull public LocalDateTime saleDateTime;
 
   public Coupon toCoupon() {
-    return Coupon.builder()
-        .name(this.getName())
-        .startDateTime(this.getStartDateTime())
-        .endDateTime(this.getEndDateTime())
-        .build();
+    return Coupon.builder().name(this.name).saleDateTime(this.saleDateTime).build();
   }
 }

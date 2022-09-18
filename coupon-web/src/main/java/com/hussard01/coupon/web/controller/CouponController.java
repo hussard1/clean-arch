@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,11 +19,11 @@ public class CouponController {
   private final CouponService couponService;
 
   @GetMapping
-  public CouponRes coupons(final CouponSearchReq couponSearchReq) {
-    return CouponRes.of(couponService.find(couponSearchReq.toCouponSearchParam()));
+  public List<CouponRes> coupons(final CouponSearchReq couponSearchReq) {
+    return CouponRes.listOf(couponService.findBy(couponSearchReq.toCouponSearchParam()));
   }
 
-  @PostMapping("/coupons")
+  @PostMapping
   public CouponRes saveCoupons(@RequestBody final CouponCreateReq couponCreateReq) {
     final Coupon coupon = couponCreateReq.toCoupon();
     return CouponRes.of(couponService.create(coupon));
