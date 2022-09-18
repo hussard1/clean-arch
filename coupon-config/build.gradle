@@ -1,0 +1,12 @@
+bootJar { enabled = true }
+jar { enabled = false }
+
+dependencies {
+    implementation project(':coupon-core')
+    implementation project(':coupon-web')
+    implementation project(':coupon-infra')
+
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+}

@@ -1,0 +1,5 @@
+rootProject.name = 'clean-arch'
+include 'coupon-config'
+include 'coupon-core'
+include 'coupon-infra'
+include 'coupon-web'
